@@ -58,6 +58,15 @@ Faction_Roster_Activity <- Faction_Roster %>%
     summarise(count=n(), .groups = 'drop') %>% 
     rename(total_members = count) 
   
+  Faction_Roster_List_Tier0 <- Faction_Roster_Activity %>% 
+    select(name, tier, rank) %>% 
+    filter(tier =='Tier 0') %>% 
+    select(-tier)
+ 
+   Faction_Roster_List_Tier1 <- Faction_Roster_Activity %>% 
+    select(name, tier, rank) %>% 
+    filter(tier =='Tier 1') %>% 
+     select(-tier)
   
   
 #### Zero Hour Report - Three Month Inactive
