@@ -22,11 +22,12 @@ Faction_Roster <- read.csv("C:/Users/harle/OneDrive/Desktop/SAPD Files 2024/PD r
 #### Error Calculations
 Faction_Roster_Activity <- Faction_Roster %>% 
  mutate(playtime_2_weeks = gsub(" hours", "", playtime_2_weeks)) %>% 
+  mutate(playtime_2_weeks = as.numeric(playtime_2_weeks), playtime_2_weeks) %>% 
   mutate(
     Activity_Zero = playtime_2_weeks == 0,
     Activity_Under_20 = playtime_2_weeks > 0 & playtime_2_weeks <=20,
     Activity_Between_20_40 = playtime_2_weeks >20 & playtime_2_weeks <= 40,
-    Activity_Between_40_80 = playtime_2_weeks >40 & playtime_2_weeks <=80,
+    Activity_Between_40_80 = playtime_2_weeks >40 & playtime_2_weeks <= 80,
     Activity_above_80 = playtime_2_weeks > 80
   ) %>% 
   mutate(Activity_Type = case_when(
@@ -65,6 +66,12 @@ Faction_Zero_Hour_4_Weeks <- Faction_Roster_Activity %>%
   group_by(tier)|>
   summarise(count=n(), .groups = 'drop') 
   
-Faction_Zero_Hour_4_Weeks <- left_join(Faction_Roster_Count, Faction_Zero_Hour_4_Weeks, by = 'tier')
+Faction_Zero_Hour_4_Weeks <- right_join(Faction_Roster_Count, Faction_Zero_Hour_4_Weeks, by = 'tier')
+
+Faction_Zero_Hour_4_Weeks <- Faction_Zero_Hour_4_Weeks %>% 
+  mutate(Percentage = count/total_members * 100)
+
+#### Report by activity type
+
 
   
