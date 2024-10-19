@@ -20,7 +20,11 @@ flextable_format <- function(data) {
 Faction_Roster_Count_Table <- Faction_Roster_Count %>% 
   flextable_format()
 
+Faction_Roster_List_Tier0_Table <- Faction_Roster_List_Tier0 %>% 
+  flextable_format()
 
+Faction_Roster_List_Tier1_Table <- Faction_Roster_List_Tier1 %>% 
+  flextable_format()
 
 rmarkdown::render(
   "activity report.Rmd")
