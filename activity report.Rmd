@@ -1,0 +1,30 @@
+---
+title: "Activity Report"
+author: "Ben Harley"
+date: "2024-10-19"
+output: word_document
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, dpi = 300)
+
+```
+
+
+<Div custom-style = "Publication subtitle">  </Div>
+Extract date: `r format(Sys.Date(), '%d %B %Y')`    
+Contact: [Bennyy](mailto:harleyb101010@gmail.com)   
+
+## Background
+
+This is the IMRP's activity report which is based on faction rosters across the entire community. This report is generic and can be used for every faction. If you have any questions please contact Bennyy
+
+## Member Count by Tier
+
+
+```{r table_1, ft.align="left"}
+Faction_Roster_Count
+
+```
+
+
