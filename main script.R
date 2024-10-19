@@ -56,7 +56,8 @@ Faction_Roster_Activity <- Faction_Roster %>%
     select(tier)%>% 
     group_by(tier)|>
     summarise(count=n(), .groups = 'drop') %>% 
-    rename(total_members = count)
+    rename(total_members = count) 
+  
   
   
 #### Zero Hour Report - Three Month Inactive
@@ -82,6 +83,5 @@ Faction_Roster_Activity_Breakdown <- right_join(Faction_Roster_Count, Faction_Ro
   mutate(Percentage = count/total_members * 100) %>% 
   select(-total_members)
 
-rmarkdown::render(
-  "activity report.Rmd")
+
 
