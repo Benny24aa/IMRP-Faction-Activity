@@ -20,7 +20,7 @@ Contact: [Bennyy](mailto:harleyb101010@gmail.com)
 This is the IMRP's activity report which is based on faction rosters across the entire community. This report is generic and can be used for every faction. If you have any questions please contact Bennyy
 
 ## List of Tier 0's
-```{r table_1, ft.align="left"}
+```{r table_0, ft.align="left"}
 Faction_Roster_List_Tier0_Table
 
 ```
@@ -39,4 +39,10 @@ Faction_Roster_Count_Table
 
 ```
 
+## Tier 0 Activity Type Graph
 
+This is the number of members by tier in the faction. 
+```{r table_3, ft.align="left"}
+bar_graph_tier0_activity
+
+```
