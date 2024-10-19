@@ -46,3 +46,30 @@ This is the number of members by tier in the faction.
 bar_graph_tier0_activity
 
 ```
+
+## Tier 1 Activity Type Graph
+
+This is the number of members by tier in the faction. 
+```{r table_4, ft.align="left"}
+bar_graph_tier1_activity
+
+```
+
+
+
+## Tier 2 Activity Type Graph
+
+This is the number of members by tier in the faction. 
+```{r table_5, ft.align="left"}
+bar_graph_tier2_activity
+
+```
+
+
+## Tier 3 Activity Type Graph
+
+This is the number of members by tier in the faction. 
+```{r table_6, ft.align="left"}
+bar_graph_tier3_activity
+
+```
