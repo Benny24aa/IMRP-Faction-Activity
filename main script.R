@@ -48,7 +48,34 @@ Faction_Roster_Activity <- Faction_Roster %>%
   Faction_Roster_Activity <- Faction_Roster_Activity %>% 
     filter(Activity_Type != "Bug Row") %>% 
     filter(tier != "Tier")
-
+  
+  Faction_Roster_Activity_Tier_0_Count <- Faction_Roster_Activity %>% 
+    filter(tier == "Tier 0") %>% 
+    select(tier, Activity_Type) %>% 
+    group_by(tier, Activity_Type)|>
+    summarise(count=n(), .groups = 'drop') %>% 
+    select(-tier)
+  
+  Faction_Roster_Activity_Tier_1_Count <- Faction_Roster_Activity %>% 
+    filter(tier == "Tier 1") %>% 
+    select(tier, Activity_Type) %>% 
+    group_by(tier, Activity_Type)|>
+    summarise(count=n(), .groups = 'drop') %>% 
+    select(-tier)
+  
+  Faction_Roster_Activity_Tier_2_Count <- Faction_Roster_Activity %>% 
+    filter(tier == "Tier 2") %>% 
+    select(tier, Activity_Type) %>% 
+    group_by(tier, Activity_Type)|>
+    summarise(count=n(), .groups = 'drop') %>% 
+    select(-tier)
+  
+  Faction_Roster_Activity_Tier_3_Count <- Faction_Roster_Activity %>% 
+    filter(tier == "Tier 3") %>% 
+    select(tier, Activity_Type) %>% 
+    group_by(tier, Activity_Type)|>
+    summarise(count=n(), .groups = 'drop') %>% 
+    select(-tier)
 
 #### How many people are of a certain tier analysis
   
