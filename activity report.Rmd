@@ -1,6 +1,6 @@
 ---
 title: "Activity Report"
-author: "Ben Harley"
+author: "Bennyy"
 date: "2024-10-19"
 output: word_document
 ---
@@ -21,9 +21,9 @@ This is the IMRP's activity report which is based on faction rosters across the 
 
 ## Member Count by Tier
 
-
+This is the number of members by tier in the faction. 
 ```{r table_1, ft.align="left"}
-Faction_Roster_Count
+Faction_Roster_Count_Table
 
 ```
 
