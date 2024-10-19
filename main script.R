@@ -42,12 +42,29 @@ Faction_Roster_Activity <- Faction_Roster %>%
   Faction_Roster_Activity$Activity_Type <- Faction_Roster_Activity$Activity_Type %>% 
     replace_na('Bug Row')
   
+  #### Data cleaned of rows which comes from copying and pasting from ucp
+  
   Faction_Roster_Activity <- Faction_Roster_Activity %>% 
-    filter(Activity_Type != "Bug Row")
+    filter(Activity_Type != "Bug Row") %>% 
+    filter(tier != "Tier")
 
 
+#### How many people are of a certain tier analysis
+  
+  Faction_Roster_Count <- Faction_Roster_Activity %>% 
+    select(tier)%>% 
+    group_by(tier)|>
+    summarise(count=n(), .groups = 'drop') %>% 
+    rename(total_members = count)
+  
+  
 #### Zero Hour Report - Three Month Inactive
 
 Faction_Zero_Hour_4_Weeks <- Faction_Roster_Activity %>% 
-  filter(Activity_Type == "Inactive") 
+  filter(Activity_Type == "Inactive") %>% 
+  group_by(tier)|>
+  summarise(count=n(), .groups = 'drop') 
+  
+Faction_Zero_Hour_4_Weeks <- left_join(Faction_Roster_Count, Faction_Zero_Hour_4_Weeks, by = 'tier')
+
   
