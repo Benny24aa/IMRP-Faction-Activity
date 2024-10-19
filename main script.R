@@ -1,0 +1,53 @@
+library(readxl)
+library(dplyr)
+library(fs)
+library(purrr)
+library(data.table)
+library(tidyr)
+library(janitor)
+library(stringr)
+library(readr)
+library(lubridate)
+
+today_date <- Sys.Date()
+over_month_zero_hour <- today_date %m-% months(1)
+over_month_zero_hour = strptime(as.character(over_month_zero_hour), "%Y-%m-%d")
+over_month_zero_hour = format(over_month_zero_hour,"%d-%m-%Y")
+
+
+
+Faction_Roster <- read.csv("C:/Users/harle/OneDrive/Desktop/SAPD Files 2024/PD roster.csv") %>% 
+  clean_names() 
+
+#### Error Calculations
+Faction_Roster_Activity <- Faction_Roster %>% 
+ mutate(playtime_2_weeks = gsub(" hours", "", playtime_2_weeks)) %>% 
+  mutate(
+    Activity_Zero = playtime_2_weeks == 0,
+    Activity_Under_20 = playtime_2_weeks > 0 & playtime_2_weeks <=20,
+    Activity_Between_20_40 = playtime_2_weeks >20 & playtime_2_weeks <= 40,
+    Activity_Between_40_80 = playtime_2_weeks >40 & playtime_2_weeks <=80,
+    Activity_above_80 = playtime_2_weeks > 80
+  ) %>% 
+  mutate(Activity_Type = case_when(
+    Activity_Zero == TRUE ~ "Inactive",
+    Activity_Under_20 == TRUE ~ "Improvement Required",
+    Activity_Between_20_40 == TRUE ~ "Average",
+    Activity_Between_40_80 == TRUE ~ "Above Average",
+    Activity_above_80 == TRUE ~ "Get a life"
+  )) %>% 
+  select(-Activity_Zero, - Activity_Under_20, - Activity_Between_20_40, - Activity_Between_40_80, - Activity_above_80) %>% 
+  mutate(name = gsub("<a0><a0>", "", name)) ### Cleans strange issue with naming 
+
+  Faction_Roster_Activity$Activity_Type <- Faction_Roster_Activity$Activity_Type %>% 
+    replace_na('Bug Row')
+  
+  Faction_Roster_Activity <- Faction_Roster_Activity %>% 
+    filter(Activity_Type != "Bug Row")
+
+
+#### Zero Hour Report - Three Month Inactive
+
+Faction_Zero_Hour_4_Weeks <- Faction_Roster_Activity %>% 
+  filter(Activity_Type == "Inactive") 
+  
