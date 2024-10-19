@@ -5,7 +5,7 @@ flextable_format <- function(data) {
   data %>%
     flextable() |>
     bold(part = "header") %>%
-    bg(bg = "#00008B", part = "header") %>%
+    bg(bg = "#0000FF", part = "header") %>%
     color(color = "white", part = "header") %>%
     align(align = "left", part = "header") %>%
     valign(valign = "center", part = "header") %>%
@@ -17,3 +17,10 @@ flextable_format <- function(data) {
     autofit()
 }
 
+Faction_Roster_Count_Table <- Faction_Roster_Count %>% 
+  flextable_format()
+
+
+
+rmarkdown::render(
+  "activity report.Rmd")
