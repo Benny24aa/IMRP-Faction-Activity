@@ -73,5 +73,15 @@ Faction_Zero_Hour_4_Weeks <- Faction_Zero_Hour_4_Weeks %>%
 
 #### Report by activity type
 
-
+Faction_Roster_Activity_Breakdown <- Faction_Roster_Activity %>% 
+  select(tier, Activity_Type) %>% 
+  group_by(tier, Activity_Type) %>% 
+  summarise(count=n(), .groups = 'drop') 
   
+Faction_Roster_Activity_Breakdown <- right_join(Faction_Roster_Count, Faction_Roster_Activity_Breakdown, by = 'tier')%>% 
+  mutate(Percentage = count/total_members * 100) %>% 
+  select(-total_members)
+
+rmarkdown::render(
+  "activity report.Rmd")
+
