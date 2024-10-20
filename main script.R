@@ -136,3 +136,28 @@ Faction_Roster_Count_For_Table <- Faction_Roster_Activity %>%
 `Activity Types` <- c('Inactive', 'Improvement required', 'Average', 'Above Average', 'Get a Life')
 `Description` <- c('Zero Hours', 'Greater than 0 but less/equal to 20', 'Greater than 20 but less/equal to 40', 'Greater than 40 but less/equal to 80', 'Above 80')
 Condition_Table <- data.frame(`Activity Types`, `Description`)
+
+PD_Salaries <- read.csv("C:/Users/harle/OneDrive/Desktop/SAPD Files 2024/IMRP-Faction-Activity/pays.csv")
+PD_Salaries <- PD_Salaries %>% 
+  mutate(Name = gsub(' ', '', Name)) %>% 
+  mutate(Name = gsub("([[:lower:]])(?=[[:upper:]])", "\\1 ", Name, perl = TRUE), Name) %>% 
+  mutate(Pay = as.numeric(Pay)) %>% 
+  rename(name = Name) %>% 
+  mutate(name = gsub('Mc ', 'Mc', name)) %>% 
+  mutate(name = gsub('Samuelerrari', 'Samuel Ferrari', name)) %>% 
+  mutate(name = gsub('Raphael Tin Toretto', 'Raphael TinToretto', name))
+
+Pay_To_Roster_Info <- left_join(PD_Salaries, Faction_Roster_Activity, by = 'name' )
+
+Pay_To_Roster_Info_Total <- Pay_To_Roster_Info %>% 
+mutate(Total_Pay = Pay*playtime_2_weeks)
+
+Pay_Leaderboard <- Pay_To_Roster_Info_Total %>% 
+  select(name, Total_Pay)
+
+Pay_Leaderboard <- Pay_Leaderboard[order(Pay_Leaderboard$Total_Pay, decreasing = TRUE),]
+
+Pay_By_Tier_Group <- Pay_To_Roster_Info_Total %>% 
+  select(tier, Total_Pay) %>% 
+  group_by(tier) %>% 
+  summarise(Total_Pay = sum(Total_Pay), .groups = 'drop')
