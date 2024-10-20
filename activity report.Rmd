@@ -70,3 +70,13 @@ This is the number of members by activity type who are tier 3. The list of condi
 bar_graph_tier3_activity
 
 ```
+
+## Payments last 2 weeks
+
+How much each member of the faction has recieved in payments in the last 2 weeks
+```{r table_9, ft.align="left",fig.width=7, fig.height=4}
+Pay_Leaderboard_Table
+
+```
+
+Pay_Leaderboard_Table
