@@ -17,7 +17,7 @@ Contact: [Bennyy](mailto:harleyb101010@gmail.com)
 
 ## Background
 
-This is the IMRP's activity report which is based on faction rosters across the entire community. This report is generic and can be used for every faction. If you have any questions please contact Bennyy
+This is the IMRP's activity report which is based on faction rosters across the entire community. This report is generic and can be used for every faction.
 
 ## List of Tier 0's
 ```{r table_0, ft.align="left"}
@@ -31,26 +31,18 @@ Faction_Roster_List_Tier1_Table
 
 ```
 
-## Member Count by Tier
-
-This is the number of members by tier in the faction. 
-```{r table_2, ft.align="left"}
-Faction_Roster_Count_Table
-
-```
-
 ## Tier 0 Activity Type Graph
 
-This is the number of members by tier in the faction. 
-```{r table_3, ft.align="left"}
+This is the number of members by activity type who are tier 0. The list of conditions are published in a table above.
+```{r table_3, ft.align="left",fig.width=7, fig.height=4}
 bar_graph_tier0_activity
 
 ```
 
 ## Tier 1 Activity Type Graph
 
-This is the number of members by tier in the faction. 
-```{r table_4, ft.align="left"}
+This is the number of members by activity type who are tier 1. The list of conditions are published in a table above.
+```{r table_4, ft.align="left", fig.width=7, fig.height=4}
 bar_graph_tier1_activity
 
 ```
@@ -59,8 +51,8 @@ bar_graph_tier1_activity
 
 ## Tier 2 Activity Type Graph
 
-This is the number of members by tier in the faction. 
-```{r table_5, ft.align="left"}
+This is the number of members by activity type who are tier 2. The list of conditions are published in a table above.
+```{r table_5, ft.align="left",fig.width=7, fig.height=4}
 bar_graph_tier2_activity
 
 ```
@@ -68,8 +60,8 @@ bar_graph_tier2_activity
 
 ## Tier 3 Activity Type Graph
 
-This is the number of members by tier in the faction. 
-```{r table_6, ft.align="left"}
+This is the number of members by activity type who are tier 3. The list of conditions are published in a table above.
+```{r table_6, ft.align="left",fig.width=7, fig.height=4}
 bar_graph_tier3_activity
 
 ```
