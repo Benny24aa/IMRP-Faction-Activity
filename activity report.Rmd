@@ -1,7 +1,5 @@
 ---
 title: "Activity Report"
-author: "Bennyy"
-date: "2024-10-19"
 output: word_document
 ---
 
@@ -30,6 +28,13 @@ Faction_Roster_List_Tier0_Table
 Faction_Roster_List_Tier1_Table
 
 ```
+
+## Condition Table
+```{r table_7, ft.align="left",fig.width=7, fig.height=4}
+Activity_Type_Condition_Table_Output
+
+```
+
 
 ## Tier 0 Activity Type Graph
 
