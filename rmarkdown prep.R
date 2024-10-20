@@ -48,6 +48,8 @@ bar_graph_tier3_activity <- ggplot(data =  Faction_Roster_Activity_Tier_3_Count,
   geom_bar(stat="identity", width=0.7, fill="steelblue")+
   theme_minimal()
 
+Pay_Leaderboard_Table <- Pay_Leaderboard %>% 
+  flextable_format()
 
 rmarkdown::render(
   "activity report.Rmd")
