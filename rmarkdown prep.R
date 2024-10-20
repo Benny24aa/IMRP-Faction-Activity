@@ -35,18 +35,13 @@ bar_graph_tier1_activity <- ggplot(data =  Faction_Roster_Activity_Tier_1_Count,
   theme_minimal()
 
 bar_graph_tier2_activity <- ggplot(data =  Faction_Roster_Activity_Tier_2_Count,aes( x = Activity_Type, y = count ))+
-  geom_bar(stat="identity", width=0.7, height = 0.5, fill="steelblue")+
+  geom_bar(stat="identity", width=0.7, fill="steelblue")+
   theme_minimal()
 
 bar_graph_tier3_activity <- ggplot(data =  Faction_Roster_Activity_Tier_3_Count,aes( x = Activity_Type, y = count ))+
   geom_bar(stat="identity", width=0.7, fill="steelblue")+
   theme_minimal()
 
-ggsave("C:/Users/harle/OneDrive/Desktop/SAPD Files 2024/tier0.png",
-       plot = bar_graph_tier0_activity,
-       height = 10,
-       width = 14,
-       dpi = 300)
 
 rmarkdown::render(
   "activity report.Rmd")
