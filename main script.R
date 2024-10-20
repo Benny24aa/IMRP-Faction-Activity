@@ -48,34 +48,39 @@ Faction_Roster_Activity <- Faction_Roster %>%
   Faction_Roster_Activity <- Faction_Roster_Activity %>% 
     filter(Activity_Type != "Bug Row") %>% 
     filter(tier != "Tier")
+
   
   Faction_Roster_Activity_Tier_0_Count <- Faction_Roster_Activity %>% 
     filter(tier == "Tier 0") %>% 
     select(tier, Activity_Type) %>% 
     group_by(tier, Activity_Type)|>
     summarise(count=n(), .groups = 'drop') %>% 
-    select(-tier)
+    select(-tier) %>% 
+    rename(`Activity Type` = Activity_Type ,`Number of Players` = count )
   
   Faction_Roster_Activity_Tier_1_Count <- Faction_Roster_Activity %>% 
     filter(tier == "Tier 1") %>% 
     select(tier, Activity_Type) %>% 
     group_by(tier, Activity_Type)|>
     summarise(count=n(), .groups = 'drop') %>% 
-    select(-tier)
+    select(-tier)%>% 
+    rename(`Activity Type` = Activity_Type ,`Number of Players` = count )
   
   Faction_Roster_Activity_Tier_2_Count <- Faction_Roster_Activity %>% 
     filter(tier == "Tier 2") %>% 
     select(tier, Activity_Type) %>% 
     group_by(tier, Activity_Type)|>
     summarise(count=n(), .groups = 'drop') %>% 
-    select(-tier)
+    select(-tier)%>% 
+    rename(`Activity Type` = Activity_Type ,`Number of Players` = count )
   
   Faction_Roster_Activity_Tier_3_Count <- Faction_Roster_Activity %>% 
     filter(tier == "Tier 3") %>% 
     select(tier, Activity_Type) %>% 
     group_by(tier, Activity_Type)|>
     summarise(count=n(), .groups = 'drop') %>% 
-    select(-tier)
+    select(-tier)%>% 
+    rename(`Activity Type` = Activity_Type ,`Number of Players` = count )
 
 #### How many people are of a certain tier analysis
   
@@ -88,12 +93,14 @@ Faction_Roster_Activity <- Faction_Roster %>%
   Faction_Roster_List_Tier0 <- Faction_Roster_Activity %>% 
     select(name, tier, rank) %>% 
     filter(tier =='Tier 0') %>% 
-    select(-tier)
+    select(-tier) %>% 
+    rename(Name = name, Rank = rank )
  
    Faction_Roster_List_Tier1 <- Faction_Roster_Activity %>% 
     select(name, tier, rank) %>% 
     filter(tier =='Tier 1') %>% 
-     select(-tier)
+     select(-tier)%>% 
+     rename(Name = name, Rank = rank )
   
   
 #### Zero Hour Report - Three Month Inactive
@@ -119,5 +126,9 @@ Faction_Roster_Activity_Breakdown <- right_join(Faction_Roster_Count, Faction_Ro
   mutate(Percentage = count/total_members * 100) %>% 
   select(-total_members)
 
-
+Faction_Roster_Count_For_Table <- Faction_Roster_Activity %>% 
+  select(tier)%>% 
+  group_by(tier)|>
+  summarise(count=n(), .groups = 'drop') %>% 
+  rename(`Total Members` = count, `Tier` = tier)
 
