@@ -18,6 +18,10 @@ flextable_format <- function(data) {
     autofit()
 }
 
+Activity_Type_Condition_Table_Output <- Condition_Table %>% 
+  flextable_format()
+
+
 Faction_Roster_Count_Table <- Faction_Roster_Count_For_Table %>% 
   flextable_format()
 
