@@ -132,3 +132,7 @@ Faction_Roster_Count_For_Table <- Faction_Roster_Activity %>%
   summarise(count=n(), .groups = 'drop') %>% 
   rename(`Total Members` = count, `Tier` = tier)
 
+#### Data Conditions
+`Activity Types` <- c('Inactive', 'Improvement required', 'Average', 'Above Average', 'Get a Life')
+`Description` <- c('Zero Hours', 'Greater than 0 but less/equal to 20', 'Greater than 20 but less/equal to 40', 'Greater than 40 but less/equal to 80', 'Above 80')
+Condition_Table <- data.frame(`Activity Types`, `Description`)
